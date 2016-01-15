@@ -12,6 +12,8 @@ gem 'wisper-que'
 ## Usage
 
 ```ruby
+require 'wisper/que'
+
 class Joe
   include Wisper::Publisher
   def call
