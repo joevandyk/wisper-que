@@ -9,10 +9,6 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Joe Van Dyk"]
   spec.email         = ["joevandyk@gmail.com"]
 
-  if spec.respond_to?(:metadata)
-    spec.metadata['allowed_push_host'] = "TODO: Set to 'http://mygemserver.com' to prevent pushes to rubygems.org, or delete to allow pushes to any server."
-  end
-
   spec.summary       = %q{wisper adapter for que}
   spec.description   = %q{hooks que up to wisper}
   spec.homepage      = "https://github.com/joevandyk/wisper-que"
