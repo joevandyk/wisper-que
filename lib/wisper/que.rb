@@ -1,4 +1,6 @@
 require "wisper/que/version"
+require "que"
+require "wisper"
 
 module Wisper
   class Que
