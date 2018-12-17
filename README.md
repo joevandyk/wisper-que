@@ -9,6 +9,17 @@ publishing using [Que](https://github.com/chanks/que) actors.
 gem 'wisper-que'
 ```
 
+## Configuration
+
+Custom Queue Name
+
+`config/initializers/wisper_que.rb`
+```
+WisperQue.configure do |c|
+  c.queue_name = 'wisper' # or 'default'
+end
+```
+
 ## Usage
 
 ```ruby
@@ -31,6 +42,12 @@ joe = Joe.new
 joe.subscribe(SomeJob, async: true)
 joe.call
 ```
+
+Run Que with custom queue name:
+```bash
+ que -q wisper
+```
+
 
 ## Contributing
 
