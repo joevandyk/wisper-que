@@ -1,8 +1,19 @@
 require 'spec_helper'
+require 'uri'
 require 'pg'
+require 'connection_pool'
 
-Que.connection = PG::Connection.open(ENV['DATABASE_URL'] || "postgres://localhost/wisper-que-test")
-Que.mode = :sync
+uri = URI.parse(ENV['DATABASE_URL'] || "postgres://localhost/wisper-que-test")
+
+Que.connection = ConnectionPool.new(size: 1) do
+  PG::Connection.open(
+      host:     uri.host,
+      user:     uri.user,
+      password: uri.password,
+      port:     uri.port || 5432,
+      dbname:   uri.path[1..-1]
+  )
+end
 
 describe Wisper::Que do
   it 'has a version number' do
