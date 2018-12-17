@@ -1,11 +1,13 @@
 require "wisper/que/version"
+require "wisper/que/wisper_que"
 require "que"
 require "wisper"
 
 module Wisper
   class Que
-    def broadcast(subscriber, publisher, event, args)
-      Wrapper.enqueue(subscriber.name, event, args)
+
+    def broadcast(subscriber, _publisher, event, args)
+      Wrapper.enqueue(subscriber.name, event, args, queue: WisperQue.instance.queue_name)
     end
 
     class Wrapper < ::Que::Job
